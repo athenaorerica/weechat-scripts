@@ -1,7 +1,7 @@
 __module_name__ = 'mpdnp'
 __module_version__ = '1.0'
 __module_description__ = 'announces mpd now playing'
-__author__ = 'athenaorerica'
+__author__ = 'ericathesnark'
 __license__ = 'MIT/X11'
 
 import weechat
@@ -48,14 +48,14 @@ def np(data, buffer, args):
 #	date = np.get('date')
 #	track = np.get('track')
 	if playbackstatus == 'pause':
-		if not album: 
+		if not album:
 			weechat.command(curbuff, '/me np:\00306 %s \017by\00307 %s \017 [\00306%s\017/\00310%s\017] [\00302%s\00313kbps\017] [\00304paused\017] [\00309mpd %s\017]' % (title, artist, elapsed, duration, bitrate, client.mpd_version))
-		if album: 
+		if album:
 			weechat.command(curbuff, '/me np:\00306 %s \017by\00307 %s\017 from\00310 %s\017 [\00306%s\017/\00310%s\017] [\00302%s\00313kbps\017] [\00304paused\017] [\00309mpd %s\017]' % (title, artist, album, elapsed, duration, bitrate, client.mpd_version))
 	elif playbackstatus == 'play':
-		if not album: 
+		if not album:
 			weechat.command(curbuff, '/me np:\00306 %s \017by\00307 %s \017 [\00306%s\017/\00310%s\017] [\00302%s\00313kbps\017] [\00309mpd %s\017]' % (title, artist, elapsed, duration, bitrate, client.mpd_version))
-		if album: 
+		if album:
 			weechat.command(curbuff, '/me np:\00306 %s \017by\00307 %s\017 from\00310 %s\017 [\00306%s\017/\00310%s\017] [\00302%s\00313kbps\017] [\00309mpd %s\017]' % (title, artist, album, elapsed, duration, bitrate, client.mpd_version))
 	elif playbackstatus == 'stop':
 		weechat.command(curbuff, '/me np: [\00304playback stopped\017] [\00309mpd %s\017]' % client.mpd_version)
